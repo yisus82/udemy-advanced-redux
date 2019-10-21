@@ -22,12 +22,12 @@ describe('the text area', () => {
   beforeEach(() => {
     wrapped
       .find('textarea')
-      .simulate('change', { target: { value: 'new comment' } });
+      .simulate('change', { target: { value: 'New comment' } });
     wrapped.update();
   });
 
   it('can be used to type in it', () => {
-    expect(wrapped.find('textarea')).toHaveProp('value', 'new comment');
+    expect(wrapped.find('textarea')).toHaveProp('value', 'New comment');
   });
 
   it('gets emptied when form is submitted', () => {
