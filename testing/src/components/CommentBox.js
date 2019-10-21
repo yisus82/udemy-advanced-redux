@@ -1,7 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addComment } from '../actions/comments';
 
 const CommentBox = () => {
   const [comment, setComment] = React.useState('');
+
+  const dispatch = useDispatch();
 
   /**
    * Handles the change event
@@ -15,6 +19,7 @@ const CommentBox = () => {
    */
   const handleSubmit = event => {
     event.preventDefault();
+    dispatch(addComment(comment));
     setComment('');
   };
 

@@ -1,12 +1,16 @@
-import React from 'react';
 import '../../setupTests';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import CommentBox from '../CommentBox';
+import withStore from '../withStore';
 
 let wrapped;
 
 beforeEach(() => {
-  wrapped = shallow(<CommentBox />);
+  wrapped = mount(withStore(CommentBox));
+});
+
+afterEach(() => {
+  wrapped.unmount();
 });
 
 it('shows a text area and a button', () => {
