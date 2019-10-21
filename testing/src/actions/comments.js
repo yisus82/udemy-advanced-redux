@@ -6,7 +6,7 @@ export const ADD_COMMENT = 'ADD_COMMENT';
  */
 const addComment = comment => ({
   type: ADD_COMMENT,
-  comment,
+  payload: comment,
 });
 
 export { addComment };

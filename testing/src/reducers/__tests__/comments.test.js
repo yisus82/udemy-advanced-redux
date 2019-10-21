@@ -6,7 +6,7 @@ const initialState = { comments: [] };
 it('handles actions of type ADD_COMMENT', () => {
   const action = {
     type: ADD_COMMENT,
-    comment: 'New comment',
+    payload: 'New comment',
   };
   const newState = commentsReducer(initialState, action);
   expect(newState.comments).toEqual(['New comment']);
