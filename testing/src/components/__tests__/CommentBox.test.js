@@ -13,9 +13,9 @@ afterEach(() => {
   wrapped.unmount();
 });
 
-it('shows a text area and a button', () => {
-  expect(wrapped).toContainExactlyOneMatchingElement('textarea');
-  expect(wrapped).toContainExactlyOneMatchingElement('button');
+it('has a form with a text area and a button', () => {
+  expect(wrapped.find('form')).toContainExactlyOneMatchingElement('textarea');
+  expect(wrapped.find('form')).toContainExactlyOneMatchingElement('button');
 });
 
 describe('the text area', () => {

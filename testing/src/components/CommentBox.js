@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addComment } from '../actions/comments';
+import { addComment, fetchComments } from '../actions/comments';
 
 const CommentBox = () => {
   const [comment, setComment] = React.useState('');
@@ -23,18 +23,30 @@ const CommentBox = () => {
     setComment('');
   };
 
+  /**
+   * Fetches the comments
+   */
+  const handleClick = () => {
+    dispatch(fetchComments());
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h4>Add a comment</h4>
-      <textarea
-        style={{ resize: 'none' }}
-        value={comment}
-        onChange={handleChange}
-      />
-      <div>
-        <button type="submit">Submit comment</button>
-      </div>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <h4>Add a comment</h4>
+        <textarea
+          style={{ resize: 'none' }}
+          value={comment}
+          onChange={handleChange}
+        />
+        <div>
+          <button type="submit">Submit comment</button>
+        </div>
+      </form>
+      <button type="button" onClick={handleClick}>
+        Fetch comments
+      </button>
+    </div>
   );
 };
 
