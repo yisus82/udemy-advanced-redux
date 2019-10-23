@@ -40,10 +40,12 @@ const CommentBox = () => {
           onChange={handleChange}
         />
         <div>
-          <button type="submit">Submit comment</button>
+          <button id="submit-comment" type="submit">
+            Submit comment
+          </button>
         </div>
       </form>
-      <button type="button" onClick={handleClick}>
+      <button id="fetch-comments" type="button" onClick={handleClick}>
         Fetch comments
       </button>
     </div>

@@ -18,6 +18,10 @@ it('has a form with a text area and a button', () => {
   expect(wrapped.find('form')).toContainExactlyOneMatchingElement('button');
 });
 
+it('has a button to fetch comments', () => {
+  expect(wrapped).toContainExactlyOneMatchingElement('button#fetch-comments');
+});
+
 describe('the text area', () => {
   beforeEach(() => {
     wrapped

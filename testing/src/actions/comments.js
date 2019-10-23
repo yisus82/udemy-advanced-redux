@@ -2,6 +2,8 @@ import axios from 'axios';
 
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
+export const FETCH_COMMENTS_URL =
+  'https://jsonplaceholder.typicode.com/comments';
 
 /**
  * Adds a comment
@@ -16,7 +18,7 @@ const addComment = comment => ({
  * Fetches the comments
  */
 const fetchComments = () => {
-  const response = axios.get('https://jsonplaceholder.typicode.com/comments');
+  const response = axios.get(FETCH_COMMENTS_URL);
 
   return {
     type: FETCH_COMMENTS,
