@@ -1,25 +1,12 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import ReactRouterPropTypes from 'react-router-prop-types';
+import { useDispatch } from 'react-redux';
 import { addComment, fetchComments } from '../actions/comments';
+import requireAuth from './requireAuth';
 
-const CommentBox = ({ history }) => {
+const CommentBox = () => {
   const [comment, setComment] = React.useState('');
 
-  const auth = useSelector(state => state.auth);
-
   const dispatch = useDispatch();
-
-  /**
-   * Checks if a redirect is needed
-   */
-  const shouldRedirect = () => {
-    if (!auth) {
-      history.push('/');
-    }
-  };
-
-  React.useEffect(() => shouldRedirect(), [auth]);
 
   /**
    * Handles the change event
@@ -66,8 +53,4 @@ const CommentBox = ({ history }) => {
   );
 };
 
-CommentBox.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
-};
-
-export default CommentBox;
+export default requireAuth(CommentBox);
