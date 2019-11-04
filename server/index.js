@@ -5,7 +5,11 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const router = require('./router');
 
-mongoose.connect('mongodb://localhost:27017/auth');
+mongoose.connect('mongodb://localhost:27017/auth', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
 
 const app = express();
 app.use(morgan('combined'));
