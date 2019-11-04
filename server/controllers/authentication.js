@@ -1,4 +1,22 @@
+const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+
+/**
+ * Generates a token for an user
+ * @param {object} user User's model
+ */
+const tokenForUser = user => {
+  const timestamp = Date.now();
+  const payloadJWT = {
+    sub: user.id,
+    iat: timestamp,
+  };
+  const jwtTokenExpiration = parseInt(process.env.AUTH_ACCESS_TOKEN_TTL, 10);
+  const token = jwt.sign(payloadJWT, process.env.AUTH_JWT_SECRET, {
+    expiresIn: jwtTokenExpiration,
+  });
+  return token;
+};
 
 exports.signup = (req, res, next) => {
   const { email, password } = req.body;
@@ -22,7 +40,7 @@ exports.signup = (req, res, next) => {
         return next(err);
       }
 
-      return res.status(204).send();
+      return res.json({ token: tokenForUser(user) });
     });
   });
 };
