@@ -1,5 +1,9 @@
-const Authentication = require('./controllers/authentication');
+const { signup } = require('./controllers/authentication');
+const { requireAuth } = require('./services/passport');
 
 module.exports = app => {
-  app.post('/signup', Authentication.signup);
+  app.get('/', requireAuth, (_req, res) => {
+    res.send({ hi: 'there' });
+  });
+  app.post('/signup', signup);
 };
