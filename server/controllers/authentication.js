@@ -18,6 +18,10 @@ const tokenForUser = user => {
   return token;
 };
 
+exports.signin = (req, res) => {
+  res.send({ token: tokenForUser(req.user) });
+};
+
 exports.signup = (req, res, next) => {
   const { email, password } = req.body;
 
