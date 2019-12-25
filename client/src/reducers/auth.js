@@ -1,11 +1,11 @@
 import { AUTH_USER, AUTH_ERROR } from '../actions/auth';
 
-export const INITIAL_STATE = {
+export const AUTH_INITIAL_STATE = {
   token: '',
   errorMessage: '',
 };
 
-const authReducer = (state = INITIAL_STATE, action) => {
+const authReducer = (state = AUTH_INITIAL_STATE, action) => {
   switch (action.type) {
     case AUTH_USER:
       return {

@@ -15,11 +15,14 @@ const getErrorMessage = err => {
 
 export const signup = ({ email, password }, callbackFn) => async dispatch => {
   try {
-    const response = await axios.post('http://localhost:3090/signup', {
+    const {
+      data: { token },
+    } = await axios.post('http://localhost:3090/signup', {
       email,
       password,
     });
-    dispatch({ type: AUTH_USER, payload: response.data.token });
+    dispatch({ type: AUTH_USER, payload: token });
+    localStorage.setItem('token', token);
     callbackFn();
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: getErrorMessage(err) });

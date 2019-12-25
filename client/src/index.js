@@ -5,13 +5,17 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
-import { INITIAL_STATE } from './reducers/auth';
+import { AUTH_INITIAL_STATE } from './reducers/auth';
 import App from './components/App';
 import Welcome from './components/Welcome';
 import Signup from './components/auth/Signup';
+import Feature from './components/Feature';
 
 const initialState = {
-  auth: INITIAL_STATE,
+  auth: {
+    ...AUTH_INITIAL_STATE,
+    token: localStorage.getItem('token'),
+  },
 };
 const composeEnhancers =
   // @ts-ignore
@@ -28,6 +32,7 @@ ReactDOM.render(
       <App>
         <Route path="/" exact component={Welcome} />
         <Route path="/signup" component={Signup} />
+        <Route path="/feature" component={Feature} />
       </App>
     </Router>
   </Provider>,
