@@ -28,3 +28,11 @@ export const signup = ({ email, password }, callbackFn) => async dispatch => {
     dispatch({ type: AUTH_ERROR, payload: getErrorMessage(err) });
   }
 };
+
+export const signout = () => {
+  localStorage.removeItem('token');
+  return {
+    type: AUTH_USER,
+    payload: '',
+  };
+};
